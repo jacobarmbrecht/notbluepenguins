@@ -44,7 +44,7 @@ int main(int argc, char** argv)
         //Blur
         GaussianBlur(gs, blurred, Size(5, 5), 0);
         //Threshold
-        threshold(blurred, thresh, 200, 255, CV_THRESH_BINARY);
+        threshold(blurred, thresh, 252, 255, CV_THRESH_BINARY);
 
         int flags = WINDOW_NORMAL;
 
@@ -57,13 +57,13 @@ int main(int argc, char** argv)
         vector<vector<Point>> contours;
 
         findContours(thresh, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
-
-        drawContours(image, contours, -1, RED, 10);
         
         changeColor(image, 392, 744);
         changeColor(image, 801, 459);
         changeColor(image, 1017, 810);
         changeColor(image, 1626, 639);
+
+        drawContours(image, contours, -1, RED, 5);
 
         String windowName = "It's been an honor Mrs. Obama";
 

@@ -2,15 +2,15 @@
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
 #include<iostream>
-#include "list.h"
 
 using namespace cv;
 using namespace std;
 
 #define BLUE Scalar(100.0, 0.0, 0.0)
+#define RED Scalar(0.0, 0.0, 100.0)
 
 void changeColor(Mat, int, int);
-void findPenguins(llist**);
+void findPenguins(vector<Point>);
 void usage();
 
 int main(int argc, char** argv)
@@ -34,6 +34,18 @@ int main(int argc, char** argv)
                 return -1;
         }
 
+        Mat gs = Mat();
+        Mat blurred = Mat();
+        Mat thresh = Mat();
+
+        //https://www.pyimagesearch.com/2016/02/08/opencv-shape-detection/
+        //Convert to Grayscale
+        cvtColor(image, gs, CV_BGR2GRAY);
+        //Blur
+        GaussianBlur(gs, blurred, Size(5, 5), 0);
+        //Threshold
+        threshold(blurred, thresh, 200, 255, CV_THRESH_BINARY);
+
         int flags = WINDOW_NORMAL;
 
 
@@ -41,6 +53,12 @@ int main(int argc, char** argv)
         // Penguin 2: (801, 459)
         // Penguin 3: (1017, 810)
         // Penguin 4: (1626, 639)
+
+        vector<vector<Point>> contours;
+
+        findContours(thresh, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+
+        drawContours(image, contours, -1, RED, 10);
         
         changeColor(image, 392, 744);
         changeColor(image, 801, 459);
@@ -71,7 +89,7 @@ void changeColor(Mat image, int x, int y)
                   4);
 }
 
-void findPenguins(llist* penguins)
+void findPenguins(vector<Point> penguins)
 {
         // TODO
 }

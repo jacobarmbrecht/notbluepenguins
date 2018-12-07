@@ -1,6 +1,6 @@
 CFLAGS = $(shell pkg-config --libs --cflags opencv)
-SOURCES = webcam.cpp list.cpp
-HEADERS = list.h
+SOURCES = webcam.cpp
+HEADERS =
 .PHONY = all
 all: webcam
 webcam:	$(SOURCES) $(HEADERS)

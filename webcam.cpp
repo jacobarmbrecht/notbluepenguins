@@ -6,7 +6,7 @@
 using namespace cv;
 using namespace std;
 
-#define blue Scalar(100.0, 0.0, 0.0)
+#define BLUE Scalar(100.0, 0.0, 0.0)
 
 void changeColor(Mat, int, int);
 
@@ -49,7 +49,7 @@ void changeColor(Mat image, int x, int y)
   // Penguin 3: (1017, 810)
   // Penguin 4: (1626, 639)
   Point seed = Point(x, y);
-  floodFill(image, seed, blue, NULL,
+  floodFill(image, seed, BLUE, NULL,
             Scalar(7.0, 7.0, 7.0, 0.0),
             Scalar(5.0, 5.0, 5.0, 0.0),
             4);

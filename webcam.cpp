@@ -2,6 +2,7 @@
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
 #include<iostream>
+#include "list.h"
 
 using namespace cv;
 using namespace std;
@@ -9,6 +10,7 @@ using namespace std;
 #define BLUE Scalar(100.0, 0.0, 0.0)
 
 void changeColor(Mat, int, int);
+void findPenguins(llist**);
 void usage();
 
 int main(int argc, char** argv)
@@ -67,6 +69,11 @@ void changeColor(Mat image, int x, int y)
                   Scalar(7.0, 7.0, 7.0, 0.0),
                   Scalar(5.0, 5.0, 5.0, 0.0),
                   4);
+}
+
+void findPenguins(llist* penguins)
+{
+        // TODO
 }
 
 void usage()

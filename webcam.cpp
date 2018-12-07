@@ -34,6 +34,12 @@ int main(int argc, char** argv)
 
         int flags = WINDOW_NORMAL;
 
+
+        // Penguin 1: (393, 744)
+        // Penguin 2: (801, 459)
+        // Penguin 3: (1017, 810)
+        // Penguin 4: (1626, 639)
+        
         changeColor(image, 392, 744);
         changeColor(image, 801, 459);
         changeColor(image, 1017, 810);
@@ -56,10 +62,6 @@ int main(int argc, char** argv)
 
 void changeColor(Mat image, int x, int y)
 {
-        // Penguin 1: (393, 744)
-        // Penguin 2: (801, 459)
-        // Penguin 3: (1017, 810)
-        // Penguin 4: (1626, 639)
         Point seed = Point(x, y);
         floodFill(image, seed, BLUE, NULL,
                   Scalar(7.0, 7.0, 7.0, 0.0),

@@ -8,9 +8,11 @@ using namespace std;
 
 #define BLUE Scalar(100.0, 0.0, 0.0)
 #define RED Scalar(0.0, 0.0, 100.0)
+#define BLACK Scalar(0.0, 0.0, 0.0)
 
 void changeColor(Mat, int, int);
 void findPenguins(vector<Point>);
+void addWatermark(Mat);
 void usage();
 
 int main(int argc, char** argv)
@@ -64,6 +66,7 @@ int main(int argc, char** argv)
         changeColor(image, 1626, 639);
 
         drawContours(image, contours, -1, RED, 5);
+        addWatermark(image);
 
         imwrite("notblue" + filename, image);
 
@@ -82,6 +85,11 @@ void changeColor(Mat image, int x, int y)
 void findPenguins(vector<Point> penguins)
 {
         // TODO
+}
+
+void addWatermark(Mat img)
+{
+  putText(img, "It's been an honor Mrs. Obama", Point(30.0, 30.0), FONT_HERSHEY_PLAIN, 1.0, BLACK);
 }
 
 void usage()

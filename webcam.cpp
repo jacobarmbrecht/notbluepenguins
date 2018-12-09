@@ -15,7 +15,7 @@ void usage();
 
 int main(int argc, char** argv)
 {
-        char* filename;
+        string filename;
         if (argc < 2)
         {
                 usage();
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 
         vector<vector<Point>> contours;
 
-        findContours(thresh, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+        findContours(thresh, contours, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
         
         changeColor(image, 392, 744);
         changeColor(image, 801, 459);
@@ -65,17 +65,7 @@ int main(int argc, char** argv)
 
         drawContours(image, contours, -1, RED, 5);
 
-        String windowName = "It's been an honor Mrs. Obama";
-
-        namedWindow(windowName,flags);
-
-        imshow(windowName, image);
-
-        moveWindow(windowName,0,0);
-        resizeWindow(windowName,10000,100000);
-
-        waitKey(0);
-        destroyWindow(windowName);
+        imwrite("notblue" + filename, image);
 
         return 0;
 }
